@@ -71,7 +71,7 @@ void getcmd(const Block *block, char *output)
 	if (delim[0] != '\0') {
 		//only chop off newline if one is present at the end
 		i = output[i-1] == '\n' ? i-1 : i;
-		strncpy(output+i, delim, delimLen); 
+		strncpy(output+i, delim, delimLen);
 	}
 	else
 		output[i++] = '\0';
@@ -116,10 +116,9 @@ void setupsignals()
 int getstatus(char *str, char *last)
 {
 	strcpy(last, str);
-	str[0] = '\0';
+    strncpy(str, delim, delimLen);
 	for (unsigned int i = 0; i < LENGTH(blocks); i++)
 		strcat(str, statusbar[i]);
-	str[strlen(str)-strlen(delim)] = '\0';
 	return strcmp(str, last);//0 if they are the same
 }
 
