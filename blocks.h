@@ -5,6 +5,8 @@ static const Block blocks[] = {
     // HDD info (from i3blocks)
 	{"", "printf ' [%6s] ' $(df -h -P -l / | awk '/^\\// {print $4}')",	20,		0},
 	{"", "$HOME/.local/share/dwm/blocks/music",	5,		11},
+	{"", "$HOME/.local/share/dwm/blocks/memory",	10,		0},
+	{"", "$HOME/.local/share/dwm/blocks/cpu",	5,		0},
 
 	/* {"", "date '+%b %d (%a) %I:%M%p'",					5,		0}, */
 };
