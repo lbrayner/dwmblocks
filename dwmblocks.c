@@ -27,7 +27,6 @@ typedef struct {
 #ifndef __OpenBSD__
 void dummysighandler(int num);
 #endif
-void sighandler(int num);
 void getcmds(int time);
 void getsigcmds(unsigned int signal);
 void setupsignals();
@@ -46,7 +45,6 @@ static Window root;
 #else
 static void (*writestatus) () = pstdout;
 #endif
-
 
 #include "blocks.h"
 
@@ -166,7 +164,7 @@ void statusloop()
 		writestatus();
 		if (!statusContinue)
 			break;
-		sleep(1.0);
+		sleep(1);
 	}
 }
 
