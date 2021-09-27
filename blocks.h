@@ -2,6 +2,9 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	{"", "$HOME/.local/share/dwm/blocks/internet",	10,		0},
+    // HDD info (from i3blocks)
+	{"", "printf ' [%6s] ' $(df -h -P -l / | awk '/^\\// {print $4}')",	20,		0},
+	{"", "$HOME/.local/share/dwm/blocks/music",	5,		11},
 
 	/* {"", "date '+%b %d (%a) %I:%M%p'",					5,		0}, */
 };
