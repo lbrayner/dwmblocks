@@ -56,12 +56,18 @@ static int returnStatus = 0;
 //opens process *cmd and stores output in *output
 void getcmd(const Block *block, char *output)
 {
-	strcpy(output, block->icon);
 	FILE *cmdf = popen(block->command, "r");
 	if (!cmdf)
-		return;
+    {
+        strcpy(output, block->icon);
+        return;
+    }
 	int i = strlen(block->icon);
-	fgets(output+i, CMDLENGTH-i-delimLen, cmdf);
+    char buffer[CMDLENGTH];
+    // *cmd might block, don't overwrite *output until it returns
+	fgets(buffer, CMDLENGTH-i-delimLen, cmdf);
+	strcpy(output, block->icon);
+	strcpy(output+i, buffer);
 	i = strlen(output);
 	if (i == 0) {
 		//return if block and command output are both empty
